@@ -87,6 +87,8 @@ font_box['values'] = font_tuple
 font_box.current(font_tuple.index('Arial'))
 font_box.grid(row=0, column=0, padx=5)
 
+# size box 
+
 
 # ----------------&&&& End Toolbar &&&&&--------------------
 
