@@ -75,6 +75,19 @@ main_menu.add_cascade(label='Color Theme', menu=color_theme)
 
 
 #################### Toolbar ########################
+
+tool_bar = ttk.Label(main_application)
+tool_bar.pack(side=tk.TOP, fill=tk.X)
+
+# font box 
+font_tuple = tk.font.families()
+font_family = tk.StringVar()
+font_box = ttk.Combobox(tool_bar, width=30, textvariable=font_family, state='readonly')
+font_box['values'] = font_tuple
+font_box.current(font_tuple.index('Arial'))
+font_box.grid(row=0, column=0, padx=5)
+
+
 # ----------------&&&& End Toolbar &&&&&--------------------
 
 
