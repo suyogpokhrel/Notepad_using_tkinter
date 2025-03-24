@@ -151,6 +151,9 @@ text_editor.config(yscrollcommand=scroll_bar.set)
 
 ####################  status bar ########################
 
+status_bar = ttk.Label(main_application, text='Status Bar')
+status_bar.pack(side=tk.BOTTOM)
+
 
 # ----------------&&&& End status bar &&&&&--------------------
 
