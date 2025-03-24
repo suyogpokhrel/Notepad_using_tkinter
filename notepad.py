@@ -145,6 +145,25 @@ text_editor.pack(fill=tk.BOTH, expand=True)
 scroll_bar.config(command=text_editor.yview)
 text_editor.config(yscrollcommand=scroll_bar.set)
 
+# font family and font size functionality
+current_font_family = 'Arial'
+current_font_size = 12
+
+def change_font(event=None):
+    global current_font_family
+    current_font_family = font_family.get()
+    text_editor.configure(font=(current_font_family, current_font_size))
+
+def change_fontsize(event=None):
+    global current_font_size
+    current_font_size = size_var.get()
+    text_editor.configure(font=(current_font_family, current_font_size))
+
+font_box.bind('<<ComboboxSelected>>', change_font)
+font_size.bind('<<ComboboxSelected>>', change_fontsize)
+
+
+text_editor.configure(font=('Arial', 12))
 
 # ----------------&&&& End text editor &&&&&--------------------
 
