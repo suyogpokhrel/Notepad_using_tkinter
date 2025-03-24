@@ -99,9 +99,12 @@ bold_icon = tk.PhotoImage(file='icons2/bold.png')
 bold_btn = ttk.Button(tool_bar, image=bold_icon)
 bold_btn.grid(row=0, column=2, padx=5)
 
-
-
+# italic button 
 italic_icon = tk.PhotoImage(file='icons2/italic.png')
+italic_btn = ttk.Button(tool_bar, image=italic_icon)
+italic_btn.grid(row=0,column=3, padx=5)
+
+
 underline_icon = tk.PhotoImage(file='icons2/underline.png')
 
 
