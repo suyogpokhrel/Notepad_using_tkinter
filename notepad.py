@@ -162,6 +162,9 @@ def change_fontsize(event=None):
 font_box.bind('<<ComboboxSelected>>', change_font)
 font_size.bind('<<ComboboxSelected>>', change_fontsize)
 
+# buttons functionality
+
+
 
 text_editor.configure(font=('Arial', 12))
 
