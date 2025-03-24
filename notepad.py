@@ -88,6 +88,12 @@ font_box.current(font_tuple.index('Arial'))
 font_box.grid(row=0, column=0, padx=5)
 
 # size box 
+size_var = tk.IntVar()
+font_size = ttk.Combobox(tool_bar, width=14, textvariable=size_var, state='readonly')
+font_size['values'] = tuple(range(8,81))
+font_size.current(4)
+font_size.grid(row=0, column=1, padx=5)
+
 
 
 # ----------------&&&& End Toolbar &&&&&--------------------
