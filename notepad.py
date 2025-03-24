@@ -104,8 +104,12 @@ italic_icon = tk.PhotoImage(file='icons2/italic.png')
 italic_btn = ttk.Button(tool_bar, image=italic_icon)
 italic_btn.grid(row=0,column=3, padx=5)
 
-
+# underline button
 underline_icon = tk.PhotoImage(file='icons2/underline.png')
+underline_btn = ttk.Button(tool_bar, image=underline_icon)
+underline_btn.grid(row=0, column=4, padx=5)
+
+
 
 
 # ----------------&&&& End Toolbar &&&&&--------------------
