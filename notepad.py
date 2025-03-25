@@ -185,6 +185,15 @@ def change_italic():
 
 italic_btn.configure(command=change_italic)
 
+# underline button functionality 
+def change_underline():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['underline'] == 0:
+        text_editor.configure(font=(current_font_family, current_font_size, 'underline'))
+    if text_property.actual()['underline'] == 1:
+        text_editor.configure(font=(current_font_family, current_font_size, 'normal'))
+
+underline_btn.configure(command=change_underline)
 
 
 text_editor.configure(font=('Arial', 12))
