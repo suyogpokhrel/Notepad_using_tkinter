@@ -196,6 +196,18 @@ def change_underline():
 underline_btn.configure(command=change_underline)
 
 
+# font color functionality 
+def change_font_color():
+    color_var = tk.colorchooser.askcolor()
+    text_editor.configure(fg=color_var[1])
+
+font_color_btn.configure(command=change_font_color)
+
+
+# alignment functionality
+
+
+
 text_editor.configure(font=('Arial', 12))
 
 # ----------------&&&& End text editor &&&&&--------------------
