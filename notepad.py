@@ -175,6 +175,15 @@ def change_bold():
 
 bold_btn.configure(command=change_bold)
 
+# italic button functionality 
+def change_italic():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['slant'] == 'roman':
+        text_editor.configure(font=(current_font_family, current_font_size, 'italic'))
+    if text_property.actual()['slant'] == 'italic':
+        text_editor.configure(font=(current_font_family, current_font_size, 'roman'))
+
+italic_btn.configure(command=change_italic)
 
 
 
