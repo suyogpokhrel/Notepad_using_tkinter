@@ -162,7 +162,19 @@ def change_fontsize(event=None):
 font_box.bind('<<ComboboxSelected>>', change_font)
 font_size.bind('<<ComboboxSelected>>', change_fontsize)
 
-# buttons functionality
+
+# ------- buttons functionality 
+
+# bold button functionality
+def change_bold():
+    text_property = tk.font.Font(font=text_editor['font'])
+    if text_property.actual()['weight'] == 'normal':
+        text_editor.configure(font=(current_font_family, current_font_size, 'bold'))
+    if text_property.actual()['weight'] == 'bold':
+        text_editor.configure(font=(current_font_family, current_font_size, 'normal'))
+
+bold_btn.configure(command=change_bold)
+
 
 
 
