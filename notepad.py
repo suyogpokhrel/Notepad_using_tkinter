@@ -267,13 +267,14 @@ text_editor.bind('<<Modified>>', changed)
 # Variable
 url = ''
 
+# ----------- file -------------
+
 # ---------- new functionality
 def new_file(event=None):
     global url
     url = ''
     text_editor.delete(1.0, tk.END)
 
-# file command
 file.add_command(label='New', image=new_icon, compound=tk.LEFT, accelerator='Ctrl+N', command=new_file)
 
 # ---------- open functionality 
@@ -290,7 +291,6 @@ def open_file(event=None):
         return
     main_application.title(os.path.basename(url))
 
-# file command
 file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
 
 # ---------- save functionality
@@ -324,11 +324,38 @@ def save_as(event=None):
 
 file.add_command(label='Save As', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=save_as)
 
+# ---------- exit functionality
+def exit_func(event=None):
+    global url, text_changed
+    try:
+        if text_changed:
+            mbox = messagebox.askyesnocancel('Warning', 'Do you want to save the file ?')
+            if mbox is True:
+                if url:
+                    content = text_editor.get(1.0, tk.END)
+                    with open(url, 'w', encoding='utf-8') as fw:
+                        fw.write(content)
+                        main_application.destroy()
+                else:
+                    content2 = str(text_editor.get(1.0, tk.END))
+                    url = filedialog.asksaveasfile(mode='w', defaultextension='.txt', filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+                    url.write(content2)
+                    url.close()
+                    main_application.destroy()
+            elif mbox is False:
+                main_application.destroy()
+        else:
+            main_application.destroy()
+    except:
+        return
+
+file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q', command=exit_func)
 
 
-file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
+# ---------- edit ------------
 
-# edit commands
+
+
 edit.add_command(label='Copy', image=copy_icon, compound=tk.LEFT, accelerator='Ctrl+C')
 edit.add_command(label='Paste', image=paste_icon, compound=tk.LEFT, accelerator='Ctrl+V')
 edit.add_command(label='Cut', image=cut_icon, compound=tk.LEFT, accelerator='Ctrl+X')
