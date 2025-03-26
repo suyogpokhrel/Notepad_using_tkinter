@@ -311,9 +311,21 @@ def save_file(event=None):
 
 file.add_command(label='Save', image=save_icon, compound=tk.LEFT, accelerator='Ctrl+S', command=save_file)
 
+# ---------- save as functionality
+def save_as(event=None):
+    global url
+    try:
+        content = text_editor.get(1.0, tk.END)
+        url = filedialog.asksaveasfile(mode='w', defaultextension='.txt', filetypes=(('Text File', '*.txt'), ('All Files', '*.*')))
+        url.write(content)
+        url.close()
+    except:
+        return
+
+file.add_command(label='Save As', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S', command=save_as)
 
 
-file.add_command(label='Save As', image=save_as_icon, compound=tk.LEFT, accelerator='Ctrl+Alt+S')
+
 file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q')
 
 # edit commands
