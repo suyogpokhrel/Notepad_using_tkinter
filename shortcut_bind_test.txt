@@ -1,0 +1,5 @@
+
+This is a example file.
+
+Test after binding shortcut keys.
+
