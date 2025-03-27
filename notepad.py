@@ -458,10 +458,17 @@ def hide_statusbar():
 view.add_checkbutton(label='Tool Bar', onvalue=True, offvalue=False, variable= show_toolbar, image=tool_bar_icon, compound=tk.LEFT, command=hide_toolbar)
 view.add_checkbutton(label='Status Bar', onvalue=True, offvalue=0, variable= show_statusbar, image=status_bar_icon, compound=tk.LEFT, command=hide_statusbar)
 
-# color theme
+# --------- color theme --------
+def change_theme():
+    chosen_theme = theme_choice.get()
+    color_tuple = color_dict.get(chosen_theme)
+    fg_color, bg_color = color_tuple[0], color_tuple[1]
+    text_editor.config(background=bg_color, fg=fg_color)
+    
+
 count = 0
 for i in color_dict:
-    color_theme.add_radiobutton(label=i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT)
+    color_theme.add_radiobutton(label=i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT, command=change_theme)
     count+=1
 
 
