@@ -426,11 +426,37 @@ edit.add_command(label='Find', image=find_icon, compound=tk.LEFT, accelerator='C
 
 # ---------- view ----------
 
-
-
 # view check button
-view.add_checkbutton(label='Tool Bar', image=tool_bar_icon, compound=tk.LEFT)
-view.add_checkbutton(label='Status Bar', image=status_bar_icon, compound=tk.LEFT)
+show_statusbar = tk.BooleanVar()
+show_statusbar.set(True)
+show_toolbar = tk.BooleanVar()
+show_toolbar.set(True)
+
+def hide_toolbar():
+    global show_toolbar
+    if show_toolbar:
+        tool_bar.pack_forget()
+        show_toolbar = False
+    else:
+        text_editor.pack_forget()
+        status_bar.pack_forget()
+        tool_bar.pack(side=tk.TOP, fill=tk.X)
+        text_editor.pack(fill=tk.BOTH, expand=True)
+        status_bar.pack(side=tk.BOTTOM)
+        show_toolbar = True
+
+def hide_statusbar():
+    global show_statusbar
+    if show_statusbar:
+        status_bar.pack_forget()
+        show_statusbar = False
+    else:
+        status_bar.pack(side=tk.BOTTOM)
+        show_statusbar = True
+
+
+view.add_checkbutton(label='Tool Bar', onvalue=True, offvalue=False, variable= show_toolbar, image=tool_bar_icon, compound=tk.LEFT, command=hide_toolbar)
+view.add_checkbutton(label='Status Bar', onvalue=True, offvalue=0, variable= show_statusbar, image=status_bar_icon, compound=tk.LEFT, command=hide_statusbar)
 
 # color theme
 count = 0
